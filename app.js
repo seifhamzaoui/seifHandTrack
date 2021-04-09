@@ -40,7 +40,7 @@ handTrack
       { video: {} },
       function (stream) {
         video.srcObject = stream;
-        setInterval(run, 4000);
+        setInterval(run, 3000);
       },
       function (err) {}
     );
