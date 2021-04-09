@@ -5,6 +5,9 @@ let audio = document.getElementById("audio");
 let canvas = document.getElementById("canvas");
 let ctx = canvas.getContext("2d");
 let model;
+let index = 0;
+let audioTracks = ['handtrack1.mp3','handtrack2.mp3','handtrack3.mp3','handtrack4.mp3']
+
 handTrack.startVideo(video).then(function (status) {
   if (status) {
   }
@@ -14,8 +17,12 @@ function run() {
   model.detect(video).then(function (pred) {
     console.log(pred);
     if (pred.length > 0) {
-      audio.play();
-    }
+         audio.src = audioTracks[index];
+         audio.play();
+         if(index == 3){
+              index = 0;
+         }else index++
+    }else index = 0;
   });
 }
 
@@ -33,7 +40,7 @@ handTrack
       { video: {} },
       function (stream) {
         video.srcObject = stream;
-        setInterval(run, 1000);
+        setInterval(run, 2000);
       },
       function (err) {}
     );
