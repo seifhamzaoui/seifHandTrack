@@ -15,7 +15,7 @@ handTrack.startVideo(video).then(function (status) {
 
 function run() {
   model.detect(video).then(function (pred) {
-    console.log(pred);
+    alert('detected',pred)
     if (pred.length > 0) {
          audio.src = audioTracks[index];
          audio.play();
